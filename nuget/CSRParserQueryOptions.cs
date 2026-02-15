@@ -12,7 +12,6 @@ namespace APIVerve.API.CSRParser
     {
         /// <summary>
         /// The PEM-formatted Certificate Signing Request to parse
-        /// Example: -----BEGIN CERTIFICATE REQUEST-----...
         /// </summary>
         [JsonProperty("csr")]
         public string Csr { get; set; }
