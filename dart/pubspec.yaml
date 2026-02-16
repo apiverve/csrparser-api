@@ -1,0 +1,16 @@
+name: apiverve_csrparser
+description: CSR Parser extracts and analyzes information from Certificate Signing Requests (CSRs), providing detailed subject information, public key details, and fingerprints.
+version: 1.1.14
+homepage: https://apiverve.com/marketplace/csrparser?utm_source=dart&utm_medium=homepage
+repository: https://github.com/apiverve/csrparser-api/tree/main/dart
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  http: ^1.1.0
+  http_parser: ^4.0.0
+
+dev_dependencies:
+  lints: ^3.0.0
+  test: ^1.24.0
