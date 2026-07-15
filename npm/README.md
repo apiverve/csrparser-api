@@ -124,13 +124,13 @@ async function makeRequest() {
   "data": {
     "version": "v1",
     "subject": {
-      "common_name": null,
-      "organization": null,
-      "organizational_unit": null,
-      "locality": null,
-      "state": null,
-      "country": null,
-      "email": null
+      "common_name": "example.com",
+      "organization": "Example Company Inc",
+      "organizational_unit": "IT Department",
+      "locality": "San Francisco",
+      "state": "California",
+      "country": "US",
+      "email": "admin@example.com"
     },
     "public_key": {
       "algorithm": "RSA",
@@ -147,7 +147,12 @@ async function makeRequest() {
     "pem": "-----BEGIN CERTIFICATE REQUEST-----\nMIICvDCCAaQCAQAwdzELMAkGA1UEBhMCVVMxEzARBgNVBAgMCkNhbGlmb3JuaWEx\nFjAUBgNVBAcMDVNhbiBGcmFuY2lzY28xEzARBgNVBAoMCkV4YW1wbGUgQ28xEDAO\nBgNVBAsMB0RldlRlYW0xFDASBgNVBAMMC2V4YW1wbGUuY29tMIIBIjANBgkqhkiG\n9w0BAQEFAAOCAQ8AMIIBCgKCAQEAuqKT3qPzGqKqV3LqR2r3XqKqKqKqKqKqKqKq\nKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKq\nKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKq\nKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKq\nKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKq\nKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKq\nKwIDAQABoAAwDQYJKoZIhvcNAQELBQADggEBAH4jI5yKqKqKqKqKqKqKqKqKqKqK\nqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqK\nqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqK\nqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqK\nqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqK\nqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqKqK\n-----END CERTIFICATE REQUEST-----",
     "size_bytes": 705,
     "format": "PEM",
-    "is_valid": true
+    "is_valid": true,
+    "security_assessment": {
+      "is_weak_key": false,
+      "is_deprecated_signature": false,
+      "key_strength": "acceptable"
+    }
   }
 }
 ```
