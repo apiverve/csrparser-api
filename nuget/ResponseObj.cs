@@ -25,6 +25,9 @@ namespace APIVerve.API.CSRParser
 
         [JsonProperty("data")]
         public Data Data { get; set; }
+
+        [JsonProperty("premium")]
+        public Premium Premium { get; set; }
     }
 
     public partial class Data
@@ -51,13 +54,16 @@ namespace APIVerve.API.CSRParser
         public string Pem { get; set; }
 
         [JsonProperty("size_bytes")]
-        public long SizeBytes { get; set; }
+        public long? SizeBytes { get; set; }
 
         [JsonProperty("format")]
         public string Format { get; set; }
 
         [JsonProperty("is_valid")]
-        public bool IsValid { get; set; }
+        public bool? IsValid { get; set; }
+
+        [JsonProperty("security_assessment")]
+        public SecurityAssessment SecurityAssessment { get; set; }
     }
 
     public partial class Fingerprints
@@ -78,33 +84,57 @@ namespace APIVerve.API.CSRParser
         public string Algorithm { get; set; }
 
         [JsonProperty("size_bits")]
-        public long SizeBits { get; set; }
+        public long? SizeBits { get; set; }
 
         [JsonProperty("exponent")]
-        public long Exponent { get; set; }
+        public long? Exponent { get; set; }
+    }
+
+    public partial class SecurityAssessment
+    {
+        [JsonProperty("is_weak_key")]
+        public bool? IsWeakKey { get; set; }
+
+        [JsonProperty("is_deprecated_signature")]
+        public bool? IsDeprecatedSignature { get; set; }
+
+        [JsonProperty("key_strength")]
+        public string KeyStrength { get; set; }
     }
 
     public partial class Subject
     {
         [JsonProperty("common_name")]
-        public object CommonName { get; set; }
+        public string CommonName { get; set; }
 
         [JsonProperty("organization")]
-        public object Organization { get; set; }
+        public string Organization { get; set; }
 
         [JsonProperty("organizational_unit")]
-        public object OrganizationalUnit { get; set; }
+        public string OrganizationalUnit { get; set; }
 
         [JsonProperty("locality")]
-        public object Locality { get; set; }
+        public string Locality { get; set; }
 
         [JsonProperty("state")]
-        public object State { get; set; }
+        public string State { get; set; }
 
         [JsonProperty("country")]
-        public object Country { get; set; }
+        public string Country { get; set; }
 
         [JsonProperty("email")]
-        public object Email { get; set; }
+        public string Email { get; set; }
+    }
+
+    public partial class Premium
+    {
+        [JsonProperty("message")]
+        public string Message { get; set; }
+
+        [JsonProperty("upgrade_url")]
+        public Uri UpgradeUrl { get; set; }
+
+        [JsonProperty("locked_fields")]
+        public string[] LockedFields { get; set; }
     }
 }
