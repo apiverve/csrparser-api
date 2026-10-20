@@ -123,7 +123,7 @@ namespace APIVerve.API.CSRParser
         public string Country { get; set; }
 
         [JsonProperty("email")]
-        public string Email { get; set; }
+        public object Email { get; set; }
     }
 
     public partial class Premium
