@@ -63,7 +63,7 @@ declare module '@apiverve/csrparser' {
       locality:           null | string;
       state:              null | string;
       country:            null | string;
-      email:              null | string;
+      email:              null;
   }
 
   export default class csrparserWrapper {
