@@ -1,6 +1,6 @@
 {
   "name": "@apiverve/csrparser",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "CSR Parser extracts and analyzes information from Certificate Signing Requests (CSRs), providing detailed subject information, public key details, and fingerprints.",
   "main": "index.js",
   "types": "index.d.ts",
