@@ -46,7 +46,7 @@ final _formatPatterns = {
 
 /// CSR Parser API client.
 ///
-/// For more information, visit: https://apiverve.com/marketplace/csrparser?utm_source=dart&utm_medium=readme
+/// For more information, visit: https://apiverve.com/marketplace/csrparser?utm_source=dart&utm_medium=referral&utm_content=readme
 ///
 /// Parameters:
 /// * [csr] (required) - The PEM-formatted Certificate Signing Request to parse

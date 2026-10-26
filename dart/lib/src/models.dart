@@ -6,22 +6,50 @@ class CsrparserResponse {
   final dynamic error;
   final CsrparserData? data;
 
+  /// Set only when the current plan locks one or more fields; null otherwise.
+  final PremiumInfo? premium;
+
   CsrparserResponse({
     required this.status,
     this.error,
     this.data,
+    this.premium,
   });
 
   factory CsrparserResponse.fromJson(Map<String, dynamic> json) => CsrparserResponse(
     status: json['status'] as String? ?? '',
     error: json['error'],
     data: json['data'] != null ? CsrparserData.fromJson(json['data']) : null,
+    premium: json['premium'] != null ? PremiumInfo.fromJson(json['premium']) : null,
   );
 
   Map<String, dynamic> toJson() => {
     'status': status,
     if (error != null) 'error': error,
     if (data != null) 'data': data,
+    if (premium != null) 'premium': premium!.toJson(),
+  };
+}
+
+/// Describes fields the current plan does not unlock. Locked fields arrive as null
+/// in [data], and [lockedFields] names them (nested ones use dot paths).
+class PremiumInfo {
+  final String? message;
+  final String? upgradeUrl;
+  final List<String>? lockedFields;
+
+  PremiumInfo({this.message, this.upgradeUrl, this.lockedFields});
+
+  factory PremiumInfo.fromJson(Map<String, dynamic> json) => PremiumInfo(
+    message: json['message'] as String?,
+    upgradeUrl: json['upgrade_url'] as String?,
+    lockedFields: (json['locked_fields'] as List?)?.map((e) => e.toString()).toList(),
+  );
+
+  Map<String, dynamic> toJson() => {
+    if (message != null) 'message': message,
+    if (upgradeUrl != null) 'upgrade_url': upgradeUrl,
+    if (lockedFields != null) 'locked_fields': lockedFields,
   };
 }
 
@@ -35,9 +63,10 @@ class CsrparserData {
   List<dynamic>? extensions;
   CsrparserDataFingerprints? fingerprints;
   String? pem;
-  int? sizeBytes;
+  num? sizeBytes;
   String? format;
   bool? isValid;
+  CsrparserDataSecurityAssessment? securityAssessment;
 
   CsrparserData({
     this.version,
@@ -50,6 +79,7 @@ class CsrparserData {
     this.sizeBytes,
     this.format,
     this.isValid,
+    this.securityAssessment,
   });
 
   factory CsrparserData.fromJson(Map<String, dynamic> json) => CsrparserData(
@@ -63,16 +93,17 @@ class CsrparserData {
       sizeBytes: json['size_bytes'],
       format: json['format'],
       isValid: json['is_valid'],
+      securityAssessment: json['security_assessment'] != null ? CsrparserDataSecurityAssessment.fromJson(json['security_assessment']) : null,
     );
 }
 
 class CsrparserDataSubject {
-  dynamic commonName;
-  dynamic organization;
-  dynamic organizationalUnit;
-  dynamic locality;
-  dynamic state;
-  dynamic country;
+  String? commonName;
+  String? organization;
+  String? organizationalUnit;
+  String? locality;
+  String? state;
+  String? country;
   dynamic email;
 
   CsrparserDataSubject({
@@ -98,8 +129,8 @@ class CsrparserDataSubject {
 
 class CsrparserDataPublicKey {
   String? algorithm;
-  int? sizeBits;
-  int? exponent;
+  num? sizeBits;
+  num? exponent;
 
   CsrparserDataPublicKey({
     this.algorithm,
@@ -129,6 +160,24 @@ class CsrparserDataFingerprints {
       sha1: json['sha1'],
       sha256: json['sha256'],
       md5: json['md5'],
+    );
+}
+
+class CsrparserDataSecurityAssessment {
+  bool? isWeakKey;
+  bool? isDeprecatedSignature;
+  String? keyStrength;
+
+  CsrparserDataSecurityAssessment({
+    this.isWeakKey,
+    this.isDeprecatedSignature,
+    this.keyStrength,
+  });
+
+  factory CsrparserDataSecurityAssessment.fromJson(Map<String, dynamic> json) => CsrparserDataSecurityAssessment(
+      isWeakKey: json['is_weak_key'],
+      isDeprecatedSignature: json['is_deprecated_signature'],
+      keyStrength: json['key_strength'],
     );
 }
 
